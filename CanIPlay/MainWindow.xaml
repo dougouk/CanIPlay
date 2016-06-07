@@ -10,8 +10,9 @@
         mc:Ignorable="d">
   <Grid Name="TopGrid">
     <StackPanel Orientation="Horizontal">
-      <Label Content="{Binding Path=CurrentWebsite}" />
-      <Label Content="{Binding Path=CurrentStatus}" />
+      <Label Margin="2 2 2 2px" Content="{Binding Path=CurrentWebsite}" />
+      <Label Margin="2 2 2 2px" Content="{Binding Path=CurrentStatus}" />
+      <Label Margin="2 2 2 2px" Content="{Binding Path=RefreshStamp}" />
     </StackPanel>
 
   </Grid>

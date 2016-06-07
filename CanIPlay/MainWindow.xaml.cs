@@ -1,21 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Net;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CanIPlay
 {
@@ -25,15 +13,27 @@ namespace CanIPlay
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
 
-        static string GOOGLE = "http://www.google.ca";
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        Timer _timer;
 
         public MainWindow()
         {
             InitializeComponent();
-            CurrentWebsite = GOOGLE;
+            
+            Website website = new Website();
+            website.InitDictionary();
+            CurrentWebsite = website.listOfWebsites["GOOGLE"];
             DataContext = this;
+            _timer = new Timer(2000);
+            _timer.Elapsed += requestPing;
+            _timer.Enabled = true;
+        }
+
+        private void requestPing(object sender, ElapsedEventArgs e)
+        {
+            Ping();
         }
 
         private string _currentWebsite;
@@ -66,20 +66,35 @@ namespace CanIPlay
             }
         }
 
-        public void ContinousPing()
+        private string _refreshStamp;
+
+        public string RefreshStamp
         {
-            while (true)
-            {
+            get { return _refreshStamp; }
+            set {
+                if (value != _refreshStamp)
+                {
+                    _refreshStamp = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+
+        private void Ping()
+        {
                 if (CheckForInternetConnection(CurrentWebsite))
                 {
                     CurrentStatus = "Connected";
+                
                 }
                 else
                 {
                     CurrentStatus = "Not connected";
                 }
-                Thread.Sleep(2000);
-            }
+
+            RefreshStamp = DateTime.Now.ToString("HH:mm:ss");
+
         }
 
         private bool CheckForInternetConnection(string website)
