@@ -1,0 +1,14 @@
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\CanIPlay\CanIPlay\bin\Debug\CanIPlay.exe.config
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\CanIPlay\CanIPlay\bin\Debug\CanIPlay.exe
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\CanIPlay\CanIPlay\bin\Debug\CanIPlay.pdb
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\CanIPlay\CanIPlay\obj\Debug\CanIPlay.csprojResolveAssemblyReference.cache
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\CanIPlay\CanIPlay\obj\Debug\MainWindow.g.cs
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\CanIPlay\CanIPlay\obj\Debug\App.g.cs
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\CanIPlay\CanIPlay\obj\Debug\CanIPlay_MarkupCompile.cache
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\CanIPlay\CanIPlay\obj\Debug\CanIPlay_MarkupCompile.lref
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\CanIPlay\CanIPlay\obj\Debug\MainWindow.baml
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\CanIPlay\CanIPlay\obj\Debug\CanIPlay.g.resources
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\CanIPlay\CanIPlay\obj\Debug\CanIPlay.Properties.Resources.resources
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\CanIPlay\CanIPlay\obj\Debug\CanIPlay.csproj.GenerateResource.Cache
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\CanIPlay\CanIPlay\obj\Debug\CanIPlay.exe
+C:\Users\Dan\Documents\Visual Studio 2015\Projects\CanIPlay\CanIPlay\obj\Debug\CanIPlay.pdb
