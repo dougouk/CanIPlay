@@ -12,17 +12,25 @@ namespace CanIPlay
         static string GOOGLE = "http://www.google.ca";
         static string RIOT1 = "104.160.131.1";
         static string RIOT2 = "104.160.131.3";
-        
 
-        public void InitDictionary()
+        public string Name { get; set; }
+        public string URL { get; set; }
+
+        public Website(string name, string url)
         {
-            listOfWebsites = new Dictionary<string, string>();
-            listOfWebsites.Add("GOOGLE", GOOGLE);
-            listOfWebsites.Add("RIOT1", RIOT1);
-            listOfWebsites.Add("RIOT2", RIOT2);
-
+            Name = name;
+            URL = url;
         }
 
-        public Dictionary<string,string> listOfWebsites{ get; set; }
+        //public static void InitDictionary()
+        //{
+        //    listOfWebsites = new Dictionary<string, string>();
+        //    listOfWebsites.Add("GOOGLE", GOOGLE);
+        //    listOfWebsites.Add("RIOT1", RIOT1);
+        //    listOfWebsites.Add("RIOT2", RIOT2);
+
+        //}
+
+        //public static Dictionary<string,string> listOfWebsites{ get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net;
 using System.Net.NetworkInformation;
@@ -16,27 +17,51 @@ namespace CanIPlay
 
 
         public event PropertyChangedEventHandler PropertyChanged;
-
+         
         Timer _timer;
-
+        
         public MainWindow()
         {
-            InitializeComponent();
             
-            Website website = new Website();
-            website.InitDictionary();
-            CurrentWebsite = website.listOfWebsites["GOOGLE"];
+            InitDictionary();
+
+            CurrentWebsite = DictionaryWebsite["A"].URL;
+            CurrentWebsiteName = DictionaryWebsite["A"].Name    ;
             DataContext = this;
             _timer = new Timer(2000);
             _timer.Elapsed += requestPing;
             _timer.Enabled = true;
             CurrentStatus = "N/A";
             RefreshStamp = "N/A";
+            Resources["Websites"] = DictionaryWebsite;
+
+            InitializeComponent();
+        }
+
+        private void InitDictionary()
+        {
+            DictionaryWebsite = new Dictionary<string, Website>();
+            DictionaryWebsite.Add("A", new Website("GOOGLE", "http://www.google.ca"));
+            DictionaryWebsite.Add("B", new Website("RIOT1", "104.160.131.1"));
+            DictionaryWebsite.Add("C", new Website("RIOT2", "104.160.131.3"));
         }
 
         private void requestPing(object sender, ElapsedEventArgs e)
         {
             Ping();
+        }
+        private Dictionary<string,Website> _dictionaryOfWebsites;
+
+        public Dictionary<string, Website> DictionaryWebsite
+        {
+            get { return _dictionaryOfWebsites; }
+            set {
+                if (value != _dictionaryOfWebsites)
+                {
+                    _dictionaryOfWebsites = value;
+                    NotifyPropertyChanged();
+                }
+                }
         }
 
         private string _currentWebsite;
@@ -49,6 +74,20 @@ namespace CanIPlay
                 if (value != _currentWebsite)
                 {
                     _currentWebsite = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private string _currentWebsiteName;
+
+        public string CurrentWebsiteName
+        {
+            get { return _currentWebsiteName; }
+            set {
+                if (value != _currentWebsiteName)
+                {
+                    _currentWebsiteName = value;
                     NotifyPropertyChanged();
                 }
             }
