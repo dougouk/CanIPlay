@@ -9,11 +9,34 @@
         Height="350"
         mc:Ignorable="d">
   <Grid Name="TopGrid">
-    <StackPanel Orientation="Horizontal">
-      <Label Margin="2 2 2 2px" Content="{Binding Path=CurrentWebsite}" />
-      <Label Margin="2 2 2 2px" Content="{Binding Path=CurrentStatus}" />
-      <Label Margin="2 2 2 2px" Content="{Binding Path=RefreshStamp}" />
-    </StackPanel>
-
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="4" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="4" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      
+    </Grid.ColumnDefinitions>
+    <Border BorderBrush="Black" BorderThickness="2">
+      <StackPanel Orientation="Horizontal">
+        <Label Margin="2 2 2 2px"
+               Content="{Binding Path=CurrentWebsite}"
+               FontSize="20px" />
+        <Label Margin="2 2 2 2px"
+               Content="{Binding Path=CurrentStatus}"
+               FontSize="20px" />
+        <Label Margin="2 2 2 2px"
+               Content="ms"
+               FontSize="20px" />
+        <Label Margin="2 2 2 2px"
+               Content="Refreshed on: "
+               FontSize="20px" />
+        <Label Margin="2 2 2 2px"
+               Content="{Binding Path=RefreshStamp}"
+               FontSize="20px" />
+      </StackPanel>
+    </Border>
   </Grid>
 </Window>

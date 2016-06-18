@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
 using System.Timers;
 using System.Windows;
@@ -29,6 +30,8 @@ namespace CanIPlay
             _timer = new Timer(2000);
             _timer.Elapsed += requestPing;
             _timer.Enabled = true;
+            CurrentStatus = "N/A";
+            RefreshStamp = "N/A";
         }
 
         private void requestPing(object sender, ElapsedEventArgs e)
@@ -83,18 +86,37 @@ namespace CanIPlay
 
         private void Ping()
         {
-                if (CheckForInternetConnection(CurrentWebsite))
-                {
-                    CurrentStatus = "Connected";
-                
-                }
-                else
-                {
-                    CurrentStatus = "Not connected";
-                }
+            PingReply reply = IsConnectedToInternet;
+            if (reply == null)
+            {
+                CurrentStatus = "Not connected";
+            }
+            else if (reply.Status == IPStatus.Success)
+            {
+                CurrentStatus = reply.RoundtripTime.ToString();
+            }
 
             RefreshStamp = DateTime.Now.ToString("HH:mm:ss");
 
+        }
+
+        private PingReply IsConnectedToInternet
+        {
+            get
+            {
+                Uri url = new Uri(CurrentWebsite);
+                string pingurl = string.Format("{0}", url.Host);
+                string host = pingurl;
+                Ping p = new Ping();
+                try
+                {
+                    PingReply reply = p.Send(host, 3000);
+                    if (reply.Status == IPStatus.Success)
+                        return reply;
+                }
+                catch { }
+                return null;
+            }
         }
 
         private bool CheckForInternetConnection(string website)
